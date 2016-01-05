@@ -4,9 +4,16 @@ class SimpleGraph:
 	cross indexing the subject, predicate (property) and object.
 	'''
 	def __init__(self):
-		self.spo = {}
-		self.pos = {}
-		self.osp = {}
+		self._spo = {}
+		self._pos = {}
+		self._osp = {}
+	'''
+	add triple
+	'''
+	def add(self,(sub,pred,obj)):
+		self._addToIndex(self._spo,sub,pred,obj)
+		self._addToIndex(self._pos,pred,obj,sub)
+		self._addToIndex(self._osp,obj,sub,pred)
 
 	'''
 	Adding to index
